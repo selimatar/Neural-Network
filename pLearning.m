@@ -1,15 +1,15 @@
-%16-701-040 Selim Atar && %15-701-038 Fatih Çýplak %Birlikte kodlandý
+%Perceptron Ã–ÄŸrenme KuralÄ± Ã–rnek Ã‡alÄ±ÅŸma
 
 function y = pLearning (x,hedef)
 alpha = 0.1;
 bias =0.5;
 
-xSize=size(x,1); % giriþ sayýsý
+xSize=size(x,1); % giris sayisi
 xLength=length(x);
-% weight = rand(1,xSize); % aðýrlýk deðerleri
+% weight = rand(1,xSize); % agirlik degerleri
 weight = [0.5,0.8];
 
-fprintf('Weigth deðerleri=%g \n',weight)
+fprintf('Weigth degerleri=%g \n',weight)
 for i=1:xLength,
   y=0;
     for j=1:xSize,     
@@ -18,25 +18,25 @@ for i=1:xLength,
     end
     y=y+bias;
     
-        fprintf('Hesaplanan deðer y=%g \n',y)
+        fprintf('Hesaplanan deger y=%g \n',y)
     if(y<0)
         
-        fprintf('Yeni y Deðeri=%g \n',0)
+        fprintf('Yeni y Degeri=%g \n',0)
         temp=y;
         y=0;
         if(hedef(i)== y )
-            fprintf('Koþul saðlandý =%g\n',temp);
+            fprintf('Kosul saglandi =%g\n',temp);
         else
-            fprintf('%g. iterasyonda koþullar saðlanamadý \n',i);
+            fprintf('%g. iterasyonda kosullar saglanamadi \n',i);
            newWeight = rand(1,xSize);
-           fprintf('Weigth deðerleri yeniden hesaplandý=%g \n',weight)
+           fprintf('Weigth degerleri yeniden hesaplandi=%g \n',weight)
             for c=1:xLength,
                 ny=0;
                 for v=1:xSize,
                 ny = ny + x(v,c) * newWeight(v);
                 end
                 ny=ny+bias;
-                    fprintf('Hesaplanan deðer y=%g \n',ny)
+                    fprintf('Hesaplanan deger y=%g \n',ny)
                  if(ny~=y)
                     
                     deltaW1=alpha*(hedef(c)-temp)*x(j-1,i);
@@ -46,26 +46,26 @@ for i=1:xLength,
                     t1Delta=weight(j-1)+ deltaW1;
                     t2Delta=weight(j)+ deltaW2;
                     
-                    fprintf('Hesaplanan deltaW1 deðerleri=%g \n',deltaW1)
-                    fprintf('Hesaplanan t1Delta deðerleri=%g \n',t1Delta)
-                    fprintf('Hesaplanan deltaW2 deðerleri=%g \n',deltaW2)
-                    fprintf('Hesaplanan t2Delta deðerleri=%g \n',t2Delta)
+                    fprintf('Hesaplanan deltaW1 degerleri=%g \n',deltaW1)
+                    fprintf('Hesaplanan t1Delta degerleri=%g \n',t1Delta)
+                    fprintf('Hesaplanan deltaW2 degerleri=%g \n',deltaW2)
+                    fprintf('Hesaplanan t2Delta degerleri=%g \n',t2Delta)
                     
                     if(t1Delta==newWeight(v) && t2Delta==newWeight(v-1))
-                        fprintf('Tekrardan %g. iterasyonda aðýrlýklar hesaplanarak tamamlandý.',c)
+                        fprintf('Tekrardan %g. iterasyonda agirliklar hesaplanarak tamamlandi.',c)
                     end
                     end
                  end     
             end
         end   
     else
-         fprintf('Yeni y Deðeri=%g \n',1)
+         fprintf('Yeni y DeÃ°eri=%g \n',1)
          temp=y;
          y=1;
         if(hedef(i)== y )
-            fprintf('Koþul saðlandý =%g\n',temp);
+            fprintf('Kosul saglandi =%g\n',temp);
         else
-             fprintf('%g. iterasyonda koþullar saðlanamadý \n',i);
+             fprintf('%g. iterasyonda kosullar saglanamadi \n',i);
                        newWeight = [0.62,0.68];
             for c=1:xLength,
                 ny=0;
@@ -74,7 +74,7 @@ for i=1:xLength,
                 end
                 ny=ny+bias;
                
-                    fprintf('Hesaplanan deðer y=%g \n',ny)
+                    fprintf('Hesaplanan deger y=%g \n',ny)
                 if(ny~=y)
                     
                     deltaW1=alpha*(hedef(c)-temp)*x(j-1,i);
@@ -84,13 +84,13 @@ for i=1:xLength,
                     t1Delta=weight(j-1)+ deltaW1;
                     t2Delta=weight(j)+ deltaW2;
                     
-                    fprintf('Hesaplanan deltaW1 deðerleri=%g \n',deltaW1)
-                    fprintf('Hesaplanan t1Delta deðerleri=%g \n',t1Delta)
-                    fprintf('Hesaplanan deltaW2 deðerleri=%g \n',deltaW2)
-                    fprintf('Hesaplanan t2Delta deðerleri=%g \n',t2Delta)
+                    fprintf('Hesaplanan deltaW1 degerleri=%g \n',deltaW1)
+                    fprintf('Hesaplanan t1Delta degerleri=%g \n',t1Delta)
+                    fprintf('Hesaplanan deltaW2 degerleri=%g \n',deltaW2)
+                    fprintf('Hesaplanan t2Delta degerleri=%g \n',t2Delta)
 
                     if(t1Delta==newWeight(v) && t2Delta==newWeight(v-1))
-                        fprintf('%g. iterasyonda aðýrlýklar hesaplanarak tamamlandý.',c)
+                        fprintf('%g. iterasyonda agirliklar hesaplanarak tamamlandi.',c)
                     end
                     end
                 end
@@ -99,5 +99,3 @@ for i=1:xLength,
     end
 end
 end
-
-%16-701-040 Selim Atar && %15-701-038 Fatih Çýplak %Birlikte kodlandý
